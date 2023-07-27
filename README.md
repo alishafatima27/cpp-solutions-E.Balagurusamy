@@ -19,7 +19,7 @@ As I progress in coding, I will continuously update this repository with new cod
 Feel free to explore the code and use it as a reference for your own learning journey. However, I highly encourage you to challenge yourself by attempting the exercises independently before referring to the solutions. The true joy of coding lies in the process of discovery and problem-solving.
 
 # Contributing 🤝
-As this repository represents my personal journey, contributions are not expected. However, I warmly welcome suggestions and constructive feedback to help me improve my coding skills further.
+As this repository represents my personal journey. However, I warmly welcome contributions, suggestions and constructive feedback to help me improve my coding skills further.
 
 # License 📜
 This repository is licensed under the MIT License. You are welcome to use the code for educational and non-commercial purposes. Kindly provide attribution if you find the code helpful in your own coding adventures.
