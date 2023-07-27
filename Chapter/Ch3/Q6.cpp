@@ -1,3 +1,6 @@
+/* This program takes the input from the user of Player's Name , runs , innings, times not out and then give the average batting 
+   in a well formated tabular form .
+*/
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -27,14 +30,18 @@ int main() {
         cout << "Times Not Out: ";
         cin >> Player[i].t_not_out;
 
+        // Calculate batting average for each player
+        
         if (Player[i].innings - Player[i].t_not_out > 0) {
+            
             /*static_cast<double> is used to perform a type conversion from integers to double
               if both operands are integers, the result will also be an integer, 
               and any fractional part will be truncated (rounded down). 
               This behavior is known as integer truncation. */
+            
             Player[i].average = static_cast<double>(Player[i].runs) / (Player[i].innings - Player[i].t_not_out);
         } else {
-            Player[i].average = 0;
+            Player[i].average = 0;    // To avoid division by zero
         }
         cout << endl;
     }
