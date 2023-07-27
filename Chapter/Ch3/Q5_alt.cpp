@@ -26,7 +26,8 @@ int main() {
     for (int P = P_min; P <= P_max; P += P_step) {
         for (double r = r_min; r <= r_max; r += r_step) {
             for (int n = n_min; n <= n_max; n++) {
-                // Calculate the value of V using the investment equation
+                // Calculate the value of V using the investment equation           // setprecison(n): Sets the decimal precision to be used to format 
+                                                                                    // floating-point values on output operations.
                 double V = calculateValue(P, r, n);
 
                 // Print the values in the table with proper formatting
