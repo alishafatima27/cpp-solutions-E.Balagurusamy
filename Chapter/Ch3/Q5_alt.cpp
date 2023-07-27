@@ -1,3 +1,4 @@
+//This solution is copied from chatgpt.Took me a while to understand but now I am good to go ;)
 #include <iostream>
 #include <iomanip> // For setting precision of output
 
