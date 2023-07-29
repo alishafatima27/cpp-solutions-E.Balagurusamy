@@ -1,7 +1,22 @@
-/
-*Write programs to evaluate the following functions to 0.0001% accuracy.
-
+/*
+Write programs to evaluate the following functions to 0.0001% accuracy.
 (a) sin x = x - ((x^3)/(3!)) + ((x^5)/(5!)) - ((x^7)/(7!)) + ...
+*/
+
+/*Approach to Calculate Sine Using Taylor Series:
+
+   1.  Convert the angle from degrees to radians using the formula: radian_angle = degree_angle * (π / 180).
+   2.  Implement a function to calculate the power of a number using a for loop.
+   3.  Implement a recursive function to calculate the factorial of a number.
+       (note : both power and factorial have common series which is 1 , 3 , 5 ....)
+   4.  Implement a function named sin_ts to calculate the sine of the given angle using the Taylor series expansion.
+   5.  Initialize variables for the sum, the current term, and a sign variable to alternate the sign of each term.
+   6.  Use a for loop to iterate through odd values (1, 3, 5, ...) to calculate each term of the Taylor series.
+   7.  Calculate the numerator (power of the angle) and the denominator (factorial of the term) for each term.
+   8.  Calculate the current term using the formula: current_term = (numerator) / (denominator) * sign, and add it to the sum.
+   9.  Alternate the sign for the next term by multiplying the sign variable by -1.
+  10.  Return the final sum, which represents the approximate sine value of the angle in radians.
+
 */
 #include <iostream>
 #include <cmath> // defines the value of pi 
