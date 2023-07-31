@@ -20,7 +20,7 @@ Declare a variable called var to store the variance value.
 Use the formula var = E(x^2) - (E(x))^2 to calculate the variance.
 
 Display the variance value as the final result.
-/*
+*/
 // Note, Here I have used my own personal approach to solve the problem. I have not used the formula given in the book.
     
 #include <iostream>
