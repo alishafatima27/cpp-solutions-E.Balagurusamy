@@ -1,12 +1,6 @@
 # cpp-solutions-E.Balagurusamy 📚💻
 Here, you'll find comprehensive solutions to all the exercises, both theoretical and practical, from the book. I am excited to share my coding journey with you as I tackle each challenge and provide detailed explanations for the solutions.
 
-# Table of Contents 📑
--[Introduction](# Introduction 📝)
--[Usage](# Usage 🚀)                                                                                      
--[Contributing](# Contributing 🤝)                                                                                  
--[License](# License 📜)
-
 # Introduction 📝
 This repository is a reflection of my personal coding journey and pursuit of self-improvement in C++ programming. Here, I document my solutions to the challenging exercises from the book authored by E. Balagurusamy, focusing on clear and elegant code to enhance my understanding of C++.
 As I progress in coding, I will continuously update this repository with new code and insights. So, stay tuned for regular updates as I strive to complete every exercise and expand my programming knowledge.
