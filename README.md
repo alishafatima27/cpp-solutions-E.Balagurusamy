@@ -1,20 +1,20 @@
-# cpp-solutions-E.Balaguruswamy 📚💻
+# cpp-solutions-E.Balagurusamy 📚💻
 Here, you'll find comprehensive solutions to all the exercises, both theoretical and practical, from the book. I am excited to share my coding journey with you as I tackle each challenge and provide detailed explanations for the solutions.
 
 # Table of Contents 📑
--Introduction                                                                                   
--Usage                                                                                          
--Contributing                                                                                   
--License
+-[Introduction](# Introduction 📝)
+-[Usage](# Usage 🚀)                                                                                      
+-[Contributing](# Contributing 🤝)                                                                                  
+-[License](# License 📜)
 
 # Introduction 📝
-This repository is a reflection of my personal coding journey and pursuit of self-improvement in C++ programming. Here, I document my solutions to the challenging exercises from the book authored by E. Balaguruswamy, focusing on clear and elegant code to enhance my understanding of C++.
+This repository is a reflection of my personal coding journey and pursuit of self-improvement in C++ programming. Here, I document my solutions to the challenging exercises from the book authored by E. Balagurusamy, focusing on clear and elegant code to enhance my understanding of C++.
 As I progress in coding, I will continuously update this repository with new code and insights. So, stay tuned for regular updates as I strive to complete every exercise and expand my programming knowledge.
 
 All the code in this repository is my original work, written from scratch, and I have employed my own logic throughout. In the rare instances where I sought guidance from external sources, I have made sure to acknowledge them by mentioning them in the comments."
 
 **Book Title:** Object Oriented Programming with C++                                            
-**Author:** E. Balaguruswamy                                                                    
+**Author:** E. Balagurusamy                                                                    
 **Edition:** _Fifth_
 
 # Usage 🚀
