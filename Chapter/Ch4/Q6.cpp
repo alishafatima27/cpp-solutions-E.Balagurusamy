@@ -1,0 +1,3 @@
+/* Finding largest of three numbers using inline function.
+   Test the function using main program.
+*/
