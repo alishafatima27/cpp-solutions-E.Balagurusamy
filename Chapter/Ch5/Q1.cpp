@@ -41,7 +41,7 @@ public:
     void deposit(double amount) {
         if (amount > 0) {
             balance += amount;
-            cout << "Amount deposited successfully. Current balance: $" << balance << endl;
+            cout << "Amount deposited successfully. Current balance: Rs " << balance << endl;
         } else {
             cout << "Invalid amount. Deposit amount should be greater than 0." << endl;
         }
@@ -52,9 +52,9 @@ public:
         if (amount > 0) {
             if (balance >= amount) {
                 balance -= amount;
-                cout << "Amount withdrawn successfully. Current balance: $" << balance << endl;
+                cout << "Amount withdrawn successfully. Current balance: Rs " << balance << endl;
             } else {
-                cout << "Insufficient balance. Cannot withdraw $" << amount << endl;
+                cout << "Insufficient balance. Cannot withdraw Rs " << amount << endl;
             }
         } else {
             cout << "Invalid amount. Withdrawal amount should be greater than 0." << endl;
@@ -66,7 +66,7 @@ public:
         cout << "Depositor Name: " << depositorName << endl;
         cout << "Account Number: " << accountNumber << endl;
         cout << "Account Type: " << accountType << endl;
-        cout << "Balance: $" << balance << endl;
+        cout << "Balance: Rs " << balance << endl;
     }
 };
 
