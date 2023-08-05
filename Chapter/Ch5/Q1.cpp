@@ -18,99 +18,73 @@
 */ 
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 using namespace std;
 
-class BankAccount {
+class bank_account {
 private:
-    string depositorName;
-    int accountNumber;
-    string accountType;
-    double balance;
+    string name;
+    int account_num;
+    int type;
+    float balance;
+    float dep;
+    float wd;
 
 public:
-    // Constructor to initialize data members
-    BankAccount(string name, int accNumber, string accType, double initialBalance) {
-        depositorName = name;
-        accountNumber = accNumber;
-        accountType = accType;
-        balance = initialBalance;
-    }
+    void input() {
+        cout << "Please enter your name: ";
+        getline(cin, name);
+        cout << "Please enter your account number: ";
+        cin >> account_num;
 
-    // Function to deposit an amount
-    void deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-            cout << "Amount deposited successfully. Current balance: Rs " << balance << endl;
-        } else {
-            cout << "Invalid amount. Deposit amount should be greater than 0." << endl;
+        cout << "Please enter your account type (1 for Savings, 2 for Current): ";
+        cin >> type;
+        while (type != 1 && type != 2) {
+            cout << "\aInvalid Input! Please enter 1 for Savings or 2 for Current: ";
+            cin >> type;
         }
+
+        cout << "Please enter your balance: ";
+        cin >> balance;
     }
 
-    // Function to withdraw an amount after checking the balance
-    void withdraw(double amount) {
-        if (amount > 0) {
-            if (balance >= amount) {
-                balance -= amount;
-                cout << "Amount withdrawn successfully. Current balance: Rs " << balance << endl;
-            } else {
-                cout << "Insufficient balance. Cannot withdraw Rs " << amount << endl;
-            }
-        } else {
-            cout << "Invalid amount. Withdrawal amount should be greater than 0." << endl;
+    void deposit() {
+        cout << "Enter amount to be Deposited: ";
+        cin >> dep;
+        balance += dep;
+    }
+
+    void withdraw() {
+        cout << "Enter amount to be withdrawn: ";
+        cin >> wd;
+        if (wd > balance) {
+            cout << "Insufficient Balance!" << endl;
+            wd = 0;
         }
+        balance -= wd;
     }
 
-    // Function to display name and balance
-    void displayInfo() {
-        cout << "Depositor Name: " << depositorName << endl;
-        cout << "Account Number: " << accountNumber << endl;
-        cout << "Account Type: " << accountType << endl;
-        cout << "Balance: Rs " << balance << endl;
+    void display() {
+        cout << "\n\n\t**************************************************" << endl;
+        cout << "\t\tName: " << name << endl;
+        cout << "\t\tAccount number: " << account_num << endl;
+        cout << "\t\tAccount type (1: Savings, 2: Current): " << type << endl;
+        cout << "\t\tAmount deposited: " << dep << endl;
+        cout << "\t\tAmount withdrawn: " << wd << endl;
+        cout << "\t\tFinal Balance: " << balance << endl;
     }
 };
 
 int main() {
-    string name, accType;
-    int accNumber;
-    double initialBalance, amount;
-
-    // Taking input from the user to create a bank account
-    cout << "Enter Depositor Name: ";
-    getline(cin, name);
-
-    cout << "Enter Account Number: ";
-    cin >> accNumber;
-
-    cin.ignore(); // Ignore the newline character left in the input buffer
-
-    cout << "Enter Account Type: ";
-    getline(cin, accType);
-
-    cout << "Enter Initial Balance: $";
-    cin >> initialBalance;
-
-    // Creating a BankAccount object and initializing with user-provided values
-    BankAccount myAccount(name, accNumber, accType, initialBalance);
-
-    // Displaying initial account information
-    cout << "\nInitial Account Information:" << endl;
-    myAccount.displayInfo();
-
-    // Taking input from the user for deposit amount
-    cout << "\nEnter the amount to deposit: $";
-    cin >> amount;
-    myAccount.deposit(amount);
-
-    // Taking input from the user for withdrawal amount
-    cout << "\nEnter the amount to withdraw: $";
-    cin >> amount;
-    myAccount.withdraw(amount);
-
-    // Displaying updated account information
-    cout << "\nUpdated Account Information:" << endl;
-    myAccount.displayInfo();
+    cout << setw(10) << "---------------WELCOME TO ABC BANK ------------------\n\n";
+    bank_account account; // Create an object of the bank_account class
+    account.input();
+    account.deposit();
+    account.withdraw();
+    account.display();
 
     return 0;
 }
+
 
