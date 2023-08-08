@@ -50,6 +50,7 @@ public:
 
         cout << "Please enter your balance: ";
         cin >> balance;
+      cin.ignore() ; 
     }
 
     void deposit() {
