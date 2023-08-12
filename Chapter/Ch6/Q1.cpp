@@ -11,8 +11,10 @@
         bank_account account; 
    may not work.
     So we have to pass the value either implicitly or explicitly in main function.
-    bank_account account = bank_account(alisha,9997662,1,1000,100,90) ; // explicit 
-    bank_account account(alisha,9997662,1,1000,100,90);
+    
+        bank_account account = bank_account(alisha,9997662,1,1000,100,90) ; // explicit 
+        bank_account account(alisha,9997662,1,1000,100,90);
+        
     Dont forget to add parameters in the declaration and defination section of constructor to avoid
     "function call with incorrect/missing arguments" error.
 */
