@@ -21,118 +21,145 @@ using namespace std;
 class Book
 {
 private:
-    /* data */
-    char *title, *author, *publisher ;
-    float price ;
-    int stock_pos ;
+    char *title, *author, *publisher; // Pointers to store book details
+    float price;
+    int stock_pos;
+
 public:
-    Book(char *t , char *a , char *pub , float pr , int sp ) ;
-    const char* getTitle() ;
-    const char* getAuthor() ;
-    void display()
-    {
-        cout << "\nDetails\n" ;
-        cout << "Title : " << title << endl ; 
-        cout << "Author : " << author << endl ;
-        cout << "Publisher : " << publisher << endl ; 
-        cout << "Price : Rs."<<price<<"/-" << endl ;
-        cout << "Copies in Stock : " << stock_pos << endl ; 
-    }
-    void isAvail()
-    {
-        if (stock_pos > 0)
-        {
-            cout << "Book is Available." ; 
-        }
-        else
-        {
-            cout << "Not available." ; 
-        }
-    }
-    int getStock() ;
-    int cal(int cop);
+    Book(const char* t, const char* a, const char* pub, float pr, int sp); // Parametrized Constructor
+    const char* getTitle(); // Function to access the title of the book
+    const char* getAuthor(); // Function to access the author of the book
+    void display(); // Function to display details of the book
+    void isAvail(); // Function to check if stock is available
+    int getStock(); // Function to access stock count
+    int cal(int copy); // Function to calculate total price
+    ~Book(); // Destructor to release memory
 };
 
-Book::Book(char *t , char *a , char *pub , float pr , int sp)
+Book::Book(const char* t, const char* a, const char* pub, float pr, int sp)
 {
-    title = new char[strlen(t)+1] ; 
-    strcpy(title,t) ;
+    // Dynamically allocate memory for each member string
+    title = new char[strlen(t) + 1];
+    strcpy(const_cast<char*>(title), t);
 
-    author = new char[strlen(a)+1] ; 
-    strcpy(author,a) ;
+    author = new char[strlen(a) + 1];
+    strcpy(const_cast<char*>(author), a);
 
-    publisher = new char[strlen(pub)+1] ; 
-    strcpy(publisher,pub) ; 
+    publisher = new char[strlen(pub) + 1];
+    strcpy(const_cast<char*>(publisher), pub);
 
-    price = pr ; 
-
-    stock_pos = sp ; 
+    price = pr;
+    stock_pos = sp;
 }
-const char * Book::getTitle()
+
+const char* Book::getTitle()
 {
-   return title ;
+    return title;
 }
-const char * Book::getAuthor()
+
+const char* Book::getAuthor()
 {
-    return author ;
+    return author;
 }
+
+void Book::display()
+{
+    cout << "\nDetails\n";
+    cout << "Title: " << title << endl;
+    cout << "Author: " << author << endl;
+    cout << "Publisher: " << publisher << endl;
+    cout << "Price: Rs." << price << "/-" << endl;
+    cout << "Copies in Stock: " << stock_pos << endl;
+}
+
+void Book::isAvail()
+{
+    if (stock_pos > 0)
+    {
+        cout << "Stock is Available." << endl;
+    }
+    else
+    {
+        cout << "Stock not available." << endl;
+    }
+}
+
 int Book::getStock()
 {
-    return stock_pos ;
+    return stock_pos;
 }
+
 int Book::cal(int copy)
 {
-    return price*copy ; 
+    return price * copy;
 }
 
 Book::~Book()
-{ 
-        delete[] author ;
-        delete[] title ;
-        delete[] publisher ;
+{
+    // Destructor to release dynamically allocated memory
+    delete[] author;
+    delete[] title;
+    delete[] publisher;
 }
+
 int main()
 {
-    Book b1("Pride and Prjudice","Jane Austen","Penguine books",600.0,8) ; 
-    Book b2("Pride","Jane","Pub books",400.0,3) ;
-    char title[100] ;
-    char author[100] ;
-    int copies ; 
+    // Create two Book objects with initial details
+    Book b1("Pride and Prejudice", "Jane Austen", "Penguin Books", 600.0, 8);
+    Book b2("Introduction to Data Structures", "Thomas H. Cormen", "MIT Press", 750.0, 5);
 
-    cout << "Enter title : " ;
-    cin.getline(title,100) ;
+    // Input variables for user input
+    char title[100];
+    char author[100];
+    int copies;
 
-    cout << "Enter author : " ;
-    cin.getline(author,100) ;
+    cout << "Enter title: ";
+    cin.getline(title, 100);
 
-    if (strcmp(b1.getTitle(), title) == 0 && (strcmp(b1.getAuthor(), author) == 0 ))
+    cout << "Enter author: ";
+    cin.getline(author, 100);
+
+    // Check if the input matches b1's details
+    if (strcmp(b1.getTitle(), title) == 0 && strcmp(b1.getAuthor(), author) == 0)
     {
         b1.display();
         b1.isAvail();
-        cout << "Enter number of copies : ";
-        cin >> copies ; 
+        cout << "Enter number of copies: ";
+        cin >> copies;
         if (copies <= b1.getStock())
         {
-            cout << "Copies available is available."; 
-            cout << "Total amout : " << b1.cal(copies) ; 
+            cout << "Copies are available." << endl;
+            cout << "Total amount: Rs." << b1.cal(copies) << "/-" << endl;
+        }
+        else
+        {
+            cout << "\nRequired copies not in stock\n";
         }
     }
     else
     {
-        if ((strcmp(b2.getTitle(), title) == 0) && strcmp(b2.getAuthor(), author) == 0)
+        // Check if the input matches b2's details
+        if (strcmp(b2.getTitle(), title) == 0 && strcmp(b2.getAuthor(), author) == 0)
         {
             b2.display();
             b2.isAvail();
+            cout << "Enter number of copies: ";
+            cin >> copies;
             if (copies <= b2.getStock())
-        {
-            cout << "Copies is available."; 
-            cout << "Total amount : " << b1.cal(copies) ;
+            {
+                cout << "Copies are available." << endl;
+                cout << "Total amount: Rs." << b2.cal(copies) << "/-" << endl;
+            }
+            else
+            {
+                cout << "\nRequired copies not in stock\n";
+            }
         }
-        }
-        else 
+        else
         {
-            cout << "\nBook not Found." ;
+            cout << "\nBook not Found." << endl;
         }
     }
-}
 
+    return 0;
+}
