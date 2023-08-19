@@ -96,6 +96,7 @@ int main() {
 
     MAT sum = mat1 + mat2;
     MAT diff = mat1 - mat2;
+    MAT product = mat1 * mat2;
 
     cout << "Matrix 1:\n";
     mat1.displayMatrix();
@@ -103,11 +104,14 @@ int main() {
     cout << "Matrix 2:\n";
     mat2.displayMatrix();
 
-    :cout << "Sum:\n";
+    cout << "Sum:\n";
     sum.displayMatrix();
 
     cout << "Difference:\n";
     diff.displayMatrix();
+
+    cout << "Product :\n";
+    product.displayMatrix();
 
     return 0;
 }
