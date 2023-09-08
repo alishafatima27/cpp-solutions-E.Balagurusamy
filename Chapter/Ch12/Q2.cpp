@@ -17,12 +17,22 @@ class Vector
     int size ; 
     T *A ;  // Change int to T* to store elements of type T 
 public : 
+    Vector(int m) ; 
     void getdata();
     void display();
     void modify(int pos , int val);
     void multiply(int scalar); 
 }; 
 
+template <class T>
+Vector <T>::Vector(int m)
+{
+    size-> = m ; 
+    for(int i = 0 ; i < size ; i++)
+    {
+       A[i] = 0 ; 
+    }
+}
 template <class T>
 void Vector<T>::getdata()
 {
@@ -69,7 +79,10 @@ void Vector<T> ::multiply(int scalar)
 
 int main()
 {
-    Vector<int> T;  // Create a Vector of integers
+    int m ; 
+    cout << "Enter size of vector : " ; 
+    cin >> m ; 
+    Vector<int> T(m);  // Create a Vector of integers
     T.getdata();
     T.display();
     int pos , val ; 
