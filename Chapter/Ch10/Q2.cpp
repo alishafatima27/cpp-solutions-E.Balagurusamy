@@ -45,12 +45,12 @@ int main()
     }
 
     cout.fill('-');
-    cout << "+" << setw(27) << "+" << setw(22) << "+" << setw(17) << "+" << endl;
+    cout << setw(28) << setw(23) << setw(18) <<  endl;
     cout << "|" << left << setw(25) << "NAME"
          << "|" << left << setw(20) << "CODE"
          << "|" << left << setw(15) << "COST"
          << "|" << endl;
-    cout << "+" << setw(27) << "+" << setw(22) << "+" << setw(17) << "+" << endl;
+    cout << "+" << setw(29) << setw(23) << setw(18) <<  endl;
     cout.fill(' ');
 
     for (int i = 0; i < n; i++)
@@ -60,7 +60,7 @@ int main()
     }
 
     cout.fill('-');
-    cout << "+" << setw(27) << "+" << setw(22) << "+" << setw(17) << "+" << endl;
+    cout  << setw(28)  << setw(23)  << setw(18) << endl;
     cout.fill(' ');
 
     return 0;
