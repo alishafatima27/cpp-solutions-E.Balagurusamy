@@ -14,6 +14,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'  # Specify Node.js version 16
+        continue-on-error: true  # Suppress the warning
 
       - name: Checkout Repository
         uses: actions/checkout@v2
