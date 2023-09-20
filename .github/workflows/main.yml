@@ -3,7 +3,7 @@ name: C++ Build and Test
 on:
   push:
     branches:
-      - main  
+      - main  # Replace 'main' with your default branch name
 
 jobs:
   build:
@@ -13,12 +13,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Set up C++ Build Environment
-        uses: actions/setup-cpp@v2
-        with:
-          cpp-version: '14' 
-
-      - name: Build and Test
+      # Iterate through the chapters (Ch1, Ch2, etc.)
+      - name: Build and Test Chapters
         run: |
-          g++ -o my_program main.cpp  
-          ./my_program
+          for chapter in Chapter/*; do
+            if [ -d "$chapter" ]; then
+              echo "Building and testing $chapter"
+              cd "$chapter"
+              for file in *.cpp; do
+                if [ -f "$file" ]; then
+                  g++ -o "${file%.*}" "$file"
+                  "./${file%.*}"
+                fi
+              done
+              cd ..
+            fi
+          done
