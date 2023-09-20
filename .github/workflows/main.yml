@@ -1,0 +1,24 @@
+name: C++ Build and Test
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up C++ Build Environment
+        uses: actions/setup-cpp@v2
+        with:
+          cpp-version: '14' 
+
+      - name: Build and Test
+        run: |
+          g++ -o my_program main.cpp  
+          ./my_program
