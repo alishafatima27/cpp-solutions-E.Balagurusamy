@@ -3,7 +3,7 @@ name: C++ Build and Test
 on:
   push:
     branches:
-      - main  # Replace 'main' with your default branch name
+      - main 
 
 jobs:
   build:
