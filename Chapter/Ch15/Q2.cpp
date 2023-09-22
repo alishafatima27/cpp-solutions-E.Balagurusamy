@@ -9,7 +9,7 @@ int main(){
     string newString("This is a String object"); // Creating a string object with one argument constructor 
     
     // Creating an iterator to iterate through the characters of the string
-    iterator it = newString.begin();
+    string :: iterator it = newString.begin();
 
     // Use a while loop to display the contents of the string
     while(it != newString.end()){
