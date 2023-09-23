@@ -10,53 +10,44 @@ Hint: P is the principal amount and V is the value of money at the end of n year
        P = V
 In other words, the value of money at the end of the first year becomes the principal amount for the next year, and so on.*/
 
+
 #include <iostream>
-#include <iomanip>
-#include <math.h>
+#include <iomanip> // For setting precision of output
 
 using namespace std;
 
-int main()
-{
-    int V[10];
-    const int P[10] = {1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000};
-    const float r[10] = {0.10, 0.11, 0.12, 0.13, 0.14, 0.15, 0.16, 0.17, 0.18, 0.19};
-    const int n[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+// Recursive Function to calculate the value of V using the investment equation
+double calculateValue(double P, double r, int n) {
+    double V = P;
+    for (int i = 1; i <= n; i++) {
+        V = V * (1 + r);
+    }
+    return V;
+}
 
-    cout << setw(150) << "---------------------------------------------------------------------" << endl;
-    cout << "Principle";
-    for (int i = 0; i < 10; i++)
-    {
-        cout << setw(5) << "|" << "\t" << P[i] << "\t";
-    }
-    cout << "\n\n" << "Rate     ";
-    for (int i = 0; i < 10; i++)
-    {
-        cout << setw(5) << "|" << "\t" << r[i] << "\t";
-    }
-    cout << "\n\n" << "Years    ";
-    for (int i = 0; i < 10; i++)
-    {
-        cout << setw(5) << "|" << "\t" << n[i] << "\t";
-    }
-    cout << "\n\n" << "Value     ";
-    for (int i = 0; i < 10; i++)
-    {
-        V[i] = P[i] * pow((1 + r[i]), n[i]);
-        cout << setw(5) << "|" << "\t" << V[i] << "\t";
+int main() {
+    // Define the ranges for P, r, and n
+    int P_min = 1000, P_max = 10000, P_step = 1000;
+    double r_min = 0.10, r_max = 0.20, r_step = 0.01;
+    int n_min = 1, n_max = 10;
+
+    // Print the table headers
+    cout << "P\t\tr\t\tn\t\tV" << endl;
+
+    // Iterate through each combination of P, r, and n
+    for (int P = P_min; P <= P_max; P += P_step) {
+        for (double r = r_min; r <= r_max; r += r_step) {
+            for (int n = n_min; n <= n_max; n++) {
+                // Calculate the value of V using the investment equation           // setprecison(n): Sets the decimal precision to be used to format 
+                                                                                    // floating-point values on output operations.
+                double V = calculateValue(P, r, n);
+
+                // Print the values in the table with proper formatting
+                cout << fixed << setprecision(2);
+                cout << P << "\t\t" << r << "\t\t" << n << "\t\t" << V << endl;
+            }
+        }
     }
 
     return 0;
 }
-
-/*    ------------------------------------------ Output will look something like this ------------------------------------------------
-  
-Principle    |  1000        |   2000        |   3000        |   4000        |   5000        |   6000        |   7000        |   8000        |   9000        |   10000
-
-Rate         |  0.1         |   0.11        |   0.12        |   0.13        |   0.14        |   0.15        |   0.16        |   0.17        |   0.18        |   0.19
-
-Years        |  1           |   2           |   3           |   4           |   5           |   6           |   7           |   8           |   9           |   10
-
-Value        |  1100        |   2464        |   4214        |   6521        |   9627        |   13878       |   19783       |   28091       |   39919       |   56946
-
-*/
