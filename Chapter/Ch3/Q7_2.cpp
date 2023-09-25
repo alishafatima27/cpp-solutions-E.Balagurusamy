@@ -22,12 +22,12 @@ double power(double base, double exponent) // This function is just for demonstr
 float sum()
 {
     double terms = 1.0, sum = 0.0; // to avoid truncation, initialized with double data type 
-
+    cout << " terms 1 of the series : " << terms << endl ; 
     /*If we initialize i with an int , the division 1.0 / i will be an integer division.
     It will truncate the decimal part. To avoid this error and ensure floating-point division, 
     we should initialize i with a double value of 1.0*/
   
-    for(double i = 1 ; terms > 0.000001*sum ; i++) 
+    for(double i = 2 ; terms > 0.000001*sum ; i++) 
     {
         // Calculate the current term: (1/i)^i
         terms = (pow(1/i,i)); // pow function defined in cmath library.
