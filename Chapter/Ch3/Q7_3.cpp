@@ -72,7 +72,7 @@ int main()
 
     // Calculate cosine using the Taylor series expansion
     result = cos_ts(x_rad);
-    cout << "\n\n\t-------------The value of cos(" << x << ") = " << fixed << setprecision(6) << result << "-------------\n";
+    cout << "cos(" << x << ") = " << fixed << setprecision(6) << result << "-------------\n";
 
     return 0; // Indicate successful program execution
 }
