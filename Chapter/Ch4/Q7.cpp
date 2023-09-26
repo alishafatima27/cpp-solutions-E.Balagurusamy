@@ -9,7 +9,7 @@
 using namespace std;
 
 // Function to calculate the power of a number 'm' raised to an integer exponent 'n'
-double pow(float m, int n)
+double calculatePower(float m, int n)
 {
     if (n == 0 || m == 1)
     {
@@ -17,10 +17,7 @@ double pow(float m, int n)
     }
     else
     {
-        for (int i = 1; i <= n; i++)
-        {
-            return m * pow(m, n - 1);
-        }
+        return m * calculatePower(m, n - 1); // Return the result of m times m^(n-1)
     }
 }
 
@@ -48,29 +45,31 @@ int main()
     }
     else
     {
-        /*
-         Suppose you entered '2ed6'
-         this loop will iterate over each character individually 
-         i.e first for 2 then check if 2 is integer or not.
-         if yes then secnd iteration will take place.
-         if second char is not digit then the value of boolean becomes false and loop will break.
-        */
-        bool isInteger = true; // initialization of boolean variable 
-        for (char c : input) // iterates over each character of the input
+        bool isInteger = true; // Initialize the boolean variable as true
+
+        // Check if each character in the input is a digit
+        for (char c : input)
         {
-            if (!isdigit(c)) // condition : not a digit  
+            if (!isdigit(c)) // If a character is not a digit
             {
-                isInteger = false; // value is false otherwise true 
-                break;
+                isInteger = false; // Set the boolean variable to false
+                break; // Exit the loop
             }
         }
 
+        if (isInteger) // If the input consists of only digits
+        {
+            // Convert the input string to an integer
+            power = stoi(input);
+        }
+        else
+        {
             cout << "Invalid input for exponent. Using default value of 2." << endl;
             power = 2;
-        
+        }
     }
 
-    double result = pow(base, power);
+    double result = calculatePower(base, power);
 
     cout << base << " raised to power " << power << " is: " << result;
 
