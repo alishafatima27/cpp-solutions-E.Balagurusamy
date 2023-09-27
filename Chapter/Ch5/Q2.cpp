@@ -7,26 +7,33 @@
 
    Write a program to test your class.
 */ 
+
+
 #include <iostream>
 #include <vector>
 using namespace std;
 
 class Vector 
 {
-    vector<int> data; // vector data type to store integer elements
+    float *data; // vector data type to store integer elements
     int n; // to store the number of elements in the vector
 
 public:
+    Vector()
+    {
+        data = nullptr;
+        n = 0 ; 
+    }
+    
     void create()
     {
         cout << "Enter the size of the vector: "; 
         cin >> n; 
+        data = new float[n];
         for (int i = 0; i < n; i++)
         {
-            int value;
             cout << "Enter element " << i + 1 << ": "; 
-            cin >> value;
-            data.push_back(value); // push_back() add elements to the vector
+            cin >> data[i]; 
         }
     }
 
@@ -37,11 +44,11 @@ public:
         cout << "Enter the index of the vector to modify: ";
         cin >> index;
 
-        if (index >= 0 && index < n)
+        if (index > 0 && index <= n)
         {
             cout << "Enter the new element to be inserted at index " << index << ": ";
             cin >> new_value;
-            data[index] = new_value; // modifies the element at the given index
+            data[index-1] = new_value;  // indexing in array starts from 0 
             cout << "Element at index " << index << " has been modified." << endl;
         }
         else 
@@ -50,7 +57,7 @@ public:
         }
     }
 
-    void multiply()
+    void multiplyScalar()
     {
         float scalar;
         cout << "Enter the scalar value: ";
@@ -58,14 +65,13 @@ public:
 
         for (int i = 0; i < n; i++)
         {
-            // multiply each element by the scalar and convert it to float to preserve decimal points
-            data[i] = static_cast<float>(data[i]) * scalar; 
+            data[i] = (data[i]) * scalar; 
         }
     }
 
     void display()
     {
-        cout << "--------- The elements of the vector are: ----------" << endl;
+        cout << "\n--------- The elements of the vector are: ----------" << endl;
         cout << "( ";
         for (int i = 0; i < n; i++)
         {
@@ -84,10 +90,11 @@ public:
 int main()
 {
     cout << "--------------- VECTOR OPERATIONS ---------------" << endl;
-    Vector vect;
+    Vector vector;
     int choice;
 
-    vect.create();
+    vector.create();
+    vector.display() ;
 
     while (true) // The loop will continue untill user has enetered the correct choice 
     {
@@ -104,13 +111,13 @@ int main()
             switch (choice)
             {
                 case 1:
-                    vect.modify(); // call modify() function if the user chooses option 1
+                    vector.modify(); // call modify() function if the user chooses option 1
                     break;
                 case 2:
-                    vect.multiply(); // call the multiply() function if the user chooses option 2
+                    vector.multiplyScalar(); // call the multiply() function if the user chooses option 2
                     break;
                 case 3:
-                    vect.display(); // call the display() function if the user chooses option 3
+                    vector.display(); // call the display() function if the user chooses option 3
                     break;
                 case 4:
                     cout << "--------- END ----------" << endl; // exit the program if the user chooses option 4
@@ -120,8 +127,7 @@ int main()
                     break;
             }
         }
+        
     }
-
     return 0;
 }
-
