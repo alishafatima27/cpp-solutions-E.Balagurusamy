@@ -13,106 +13,113 @@
 */ 
 
 #include <iostream>
-#include <vector>
 using namespace std;
 
-class Vector 
-{
-    vector<int> data; // vector data type to store integer elements
-    int n; // to store the number of elements in the vector
+class Vector {
+    float* data; // pointer to store float elements
+    int n;       // to store the number of elements in the vector
 
 public:
-    void create()
-    {
-        cout << "Enter the size of the vector: "; 
-        cin >> n; 
-        for (int i = 0; i < n; i++)
-        {
-            int value;
-            cout << "Enter element " << i + 1 << ": "; 
+    Vector() {
+        data = nullptr; // Initialize the pointer to nullptr
+        n = 0;
+    }
+
+    void create() {
+        cout << "Enter the size of the vector: ";
+        cin >> n;
+
+        // Allocate memory for the vector data
+        data = new float[n];
+
+        for (int i = 0; i < n; i++) {
+            float value;
+            cout << "Enter element " << i + 1 << ": ";
             cin >> value;
-            data.push_back(value); // push_back() add elements to the vector
+            data[i] = value; // Store the element in the allocated memory
         }
     }
 
-    void modify()
-    {
-        int index, new_value;
+    void modify() {
+        int index;
+        float new_value;
         cout << "Modifying the vector:" << endl;
         cout << "Enter the index of the vector to modify: ";
         cin >> index;
 
-        if (index >= 0 && index < n)
-        {
+        if (index >= 0 && index < n) {
             cout << "Enter the new element to be inserted at index " << index << ": ";
             cin >> new_value;
-            data[index] = new_value; // modifies the element at the given index
+            data[index] = new_value; // Modify the element at the given index
             cout << "Element at index " << index << " has been modified." << endl;
-        }
-        else 
-        {
-            cout << "Invalid index! Please enter a valid index between 0 and " << n-1 << " ." << endl;
+        } else {
+            cout << "Invalid index! Please enter a valid index between 0 and " << n - 1 << " ." << endl;
         }
     }
 
-    void multiply()
-    {
+    void multiply() {
         float scalar;
         cout << "Enter the scalar value: ";
         cin >> scalar;
 
-        for (int i = 0; i < n; i++)
-        {
-            // multiply each element by the scalar and convert it to float to preserve decimal points
-            data[i] = static_cast<float>(data[i]) * scalar; 
+        for (int i = 0; i < n; i++) {
+            // Multiply each element by the scalar
+            data[i] *= scalar;
         }
     }
 
-    void display()
-    {
+    void display() {
         cout << "--------- The elements of the vector are: ----------" << endl;
         cout << "( ";
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             cout << data[i];
-            
-            // I will use this logic to add a comma after each element except the last one
-            if (i < n - 1)
-            {
+
+            // Add a comma after each element except the last one
+            if (i < n - 1) {
                 cout << ", ";
             }
         }
         cout << " )" << endl;
     }
+
     void add(const Vector& v1, const Vector& v2) {
-    if (v1.n != v2.n) {
-        cout << "Vector sizes do not match. Addition is not possible." << endl;
-        return;
+        if (v1.n != v2.n) {
+            cout << "Vector sizes do not match. Addition is not possible." << endl;
+            return;
+        }
+
+        // Initialize the size of the resultant vector
+        n = v1.n;
+
+        // Allocate memory for the resultant vector data
+        if (data != nullptr) {
+            delete[] data; // Delete existing data if any
+        }
+        data = new float[n];
+
+        // Add the corresponding elements of v1 and v2 and store in the resultant vector
+        for (int i = 0; i < n; i++) {
+            data[i] = v1.data[i] + v2.data[i];
+        }
     }
 
-    // Initialize the size of the resultant vector
-    n = v1.n;
-    data.clear(); // Clear existing data
-
-    // Add the corresponding elements of v1 and v2 and store in the resultant vector
-    for (int i = 0; i < n; i++) {
-        data.push_back(v1.data[i] + v2.data[i]);
+    ~Vector() {
+        if (data != nullptr) {
+            delete[] data; // Deallocate memory when the object is destroyed
+        }
     }
-}
-
-
-
 };
 
-int main()
-{
+int main() {
     cout << "--------------- VECTOR OPERATIONS ---------------" << endl;
-    Vector vect1 , vect2 , resultant ; 
+    Vector vect1, vect2, resultant;
     int choice;
 
     vect1.create();
     vect2.create();
-    resultant.add(vect1 , vect2) ; 
-    resultant.display() ; 
-}
+    resultant.add(vect1, vect2);
+    resultant.display();
 
+    // Don't forget to deallocate memory for vectors when done
+    return 0;
+}
