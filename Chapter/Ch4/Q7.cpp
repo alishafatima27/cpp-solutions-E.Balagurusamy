@@ -9,7 +9,7 @@
 using namespace std;
 
 // Function to calculate the power of a number 'm' raised to an integer exponent 'n'
-double calculatePower(float m, int n)
+double calculatePower(double m, int n)
 {
     if (n == 0 || m == 1)
     {
@@ -19,6 +19,12 @@ double calculatePower(float m, int n)
     {
         return m * calculatePower(m, n - 1); // Return the result of m times m^(n-1)
     }
+}
+
+// Overloaded function to calculate the square of a number
+double calculatePower(double m)
+{
+    return m * m;
 }
 
 int main()
@@ -32,46 +38,25 @@ int main()
     // Ignore any characters in the input buffer before reading the exponent value
     cin.ignore();
 
-    cout << "Enter the exponent (press Enter to use the default value of 2): ";
+    cout << "Enter the exponent (press Enter to calculate square): ";
 
     string input;
     getline(cin, input);
 
     // If the input is empty (i.e., the user pressed Enter without entering any value),
-    // set the default exponent value of 2.
+    // calculate the square of the number.
     if (input.empty())
     {
-        power = 2;
+        double result = calculatePower(base);
+        cout << "Square of " << base << " is: " << result;
     }
     else
     {
-        bool isInteger = true; // Initialize the boolean variable as true
-
-        // Check if each character in the input is a digit
-        for (char c : input)
-        {
-            if (!isdigit(c)) // If a character is not a digit
-            {
-                isInteger = false; // Set the boolean variable to false
-                break; // Exit the loop
-            }
-        }
-
-        if (isInteger) // If the input consists of only digits
-        {
-            // Convert the input string to an integer
-            power = stoi(input);
-        }
-        else
-        {
-            cout << "Invalid input for exponent. Using default value of 2." << endl;
-            power = 2;
-        }
+        // If the input is not empty, parse it as an integer to calculate the power.
+        power = stoi(input);
+        double result = calculatePower(base, power);
+        cout << base << " raised to power " << power << " is: " << result;
     }
-
-    double result = calculatePower(base, power);
-
-    cout << base << " raised to power " << power << " is: " << result;
 
     return 0;
 }
