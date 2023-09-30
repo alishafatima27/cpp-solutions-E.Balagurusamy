@@ -8,16 +8,6 @@
          Use concept of function overloading. 
 */
 
-/* Q7 :  Write a function power() to raise a number m to power n. The function takes a double value for m and int n,
-         and returns the result correctly. 
-         Use default value of 2 for n to make the function calculate squares when this argument is omitted.
-         Write a main that gets a values of m and n from the user to test the function.
-
-    Q8 : Write a function to perform same operation as above but takes int value for m.
-         Both functions should have same name.Write a main that calls both functions.
-         Use concept of function overloading. 
-*/
-
 #include <iostream>
 #include <string>
 using namespace std;
