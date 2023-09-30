@@ -8,6 +8,16 @@
          Use concept of function overloading. 
 */
 
+/* Q7 :  Write a function power() to raise a number m to power n. The function takes a double value for m and int n,
+         and returns the result correctly. 
+         Use default value of 2 for n to make the function calculate squares when this argument is omitted.
+         Write a main that gets a values of m and n from the user to test the function.
+
+    Q8 : Write a function to perform same operation as above but takes int value for m.
+         Both functions should have same name.Write a main that calls both functions.
+         Use concept of function overloading. 
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -23,13 +33,7 @@ double pow(double m, int n)
     {
         return 1;
     }
-    else
-    {
-        for (int i = 1; i <= n; i++)
-        {
-            return m * pow(m, n - 1); // Recursive call to calculate the power
-        }
-    }
+    return m * pow(m, n - 1); // Recursive call to calculate the power
 }
 
 // Function definition for integer
@@ -39,13 +43,7 @@ int pow(int m, int n)
     {
         return 1;
     }
-    else
-    {
-        for (int i = 1; i <= n; i++)
-        {
             return m * pow(m, n - 1); // Recursive call to calculate the power
-        }
-    }
 }
 
 int main()
@@ -64,14 +62,15 @@ int main()
     if (!cin)
     {
         power = 2;
-        cout << "\t---------Power set to default value i.e., 2-----------\n\n";
+        cout << "\n---------Power set to default value i.e., 2-----------\n\n";
+        cout << "\n" << "----------This is achieved through function overloading---------\n";
+    cout <<  "base" << " raised to power " << "power" << " is with base as int: " << pow(static_cast<int>(base), 2);
     }
-
+    else 
+    {
     // Calculate and display the power for both double and integer bases
-    cout << "\t----------This is the function ---------\n";
-    cout << "\t" << "base" << " raised to power " << "power" << " is with base as double: " << pow(base, power) << endl;
-    cout << "\n\n\t" << "----------This is achieved through function overloading---------\n";
-    cout << "\t" << "base" << " raised to power " << "power" << " is with base as int: " << pow(static_cast<int>(base), power);
-
+    cout << "\n----------This is the function ---------\n";
+    cout << "\n" << "base" << " raised to power " << "power" << " is with base as double: " << pow(base, power) << endl;
+    }
     return 0;
 }
