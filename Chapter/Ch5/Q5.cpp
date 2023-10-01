@@ -23,6 +23,11 @@ public:
         cin >> meters;
         cout << "Enter distance in centimeters: ";
         cin >> centimeters;
+    if(centimeters >=100)
+    {
+        meters += centimeters/100 ; 
+        centimeters += centimeters%100; 
+    }
     }
 
     void display() {
@@ -42,6 +47,11 @@ public:
         cin >> feet;
         cout << "Enter distance in inches: ";
         cin >> inches;
+        if(inches > 12) 
+        {   
+            feet += inches/12; 
+            inches += inches%12; 
+        }
     }
 
     void display() {
