@@ -2,7 +2,7 @@
      returns new matrix object containing their multiplication result.
 */
 
-/* Apprach for the question : 
+/* Approach for the question : 
 
    Let's say we have two matrices, A and B:
 | 1  2  3 |      
@@ -31,6 +31,17 @@ class matrix
     int m[3][3];
 
 public:
+    matrix()
+    {
+         for(int i = 0 ; i < 3 ; i++)
+              {
+                  for(int j = 0 ; j < 3 ; j++)
+                       {
+                            m[i][j]=0;
+                       }
+              }
+    }
+     
     void read()
     {
         cout << "Enter the matrix:" << endl;
@@ -46,7 +57,6 @@ public:
 
     void display()
     {
-        cout << "Matrix:" << endl;
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -74,7 +84,6 @@ matrix multiplyMatrix(const matrix &m1, const matrix &m2)
     {
         for (int j = 0; j < 3; j++)
         {
-            result.m[i][j] = 0; // Initializing the result matrix element to zero
             for (int k = 0; k < 3; k++)
             {
                 result.m[i][j] += m1.m[i][k] * m2.m[k][j];
